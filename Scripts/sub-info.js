@@ -1,6 +1,16 @@
 const args = Object.fromEntries(
-    ($argument || "").split("&").filter(Boolean).map(i => i.split("=")).map(([k, v]) => [k, decodeURIComponent(v)])
+ ($argument || "")
+    .replace(/^#!arguments\s*=\s*/, "")
+    .split(",")                 // 按逗号分割
+    .map(s => s.trim())         // 去掉空格
+    .map(pair => {
+        const [k, v] = pair.includes("=") 
+            ? pair.split("=") 
+            : pair.split(":");  // 先按 = 分，再按 : 分
+        return [k.trim(), v.trim()];
+    })
 );
+
 const url = args.url;
 
 $httpClient.get({ url }, (error, resp, body) => {

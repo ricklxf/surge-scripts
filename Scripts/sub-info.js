@@ -1,7 +1,4 @@
 
-const raw = $argument || "";
-$done({ title: "调试", content: raw });
-
 const args = Object.fromEntries(
     ($argument || "").split("&").filter(Boolean).map(i => {
         const eq = i.indexOf("=");

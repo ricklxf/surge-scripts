@@ -1,68 +1,63 @@
-# sub-info
+# surge-scripts
 
-Surge 面板模块，用于显示机场订阅的剩余流量、距重置天数和套餐到期时间。
+个人 Surge 脚本和模块收藏。
 
-适用于将流量信息编码在节点名称中的机场（不依赖 `subscription-userinfo` 响应头）。
+---
 
-## 效果
+## 模块列表
+
+### 📊 订阅流量信息
+
+在 Surge 面板中显示订阅的剩余流量、距重置天数和到期时间。
+
+**安装链接**
 
 ```
-剩余流量：9976.5 GB
-距重置：27 天
-到期：2099-12-31
+https://raw.githubusercontent.com/ricklxf/surge-scripts/master/sub-info.sgmodule
 ```
 
-## 文件说明
+**安装步骤**
 
-| 文件 | 说明 |
-|------|------|
-| `sub-info.sgmodule` | Surge 模块文件 |
-| `Scripts/sub-info.js` | 脚本文件 |
+1. 打开 Surge → 首页 → 模块 → 安装新模块
+2. 粘贴上方链接，点击 ok
+3. 在参数设置页面填写订阅链接（`url` 字段), 其他参数可保持默认
+4. 保存后回到首页，即可在面板中看到流量信息
 
-## 使用方法
-
-### 1. 下载文件
-
-将以下两个文件放到 `iCloud Drive/Surge/` 目录下：
-
-- `sub-info.sgmodule` → 放到 `iCloud Drive/Surge/`
-- `sub-info.js` → 放到 `iCloud Drive/Surge/Scripts/`
-
-### 2. 配置订阅链接
-
-编辑 `sub-info.sgmodule`，找到 `argument=url=` 这一行，将后面的内容替换为你的订阅链接：
-
-```ini
-argument=url=https://你的订阅链接
-```
-
-### 3. 启用模块
-
-在 Surge → 模块 中找到 `sub-info` 并启用。
-
-## 工作原理
-
-部分机场不在 HTTP 响应头中返回 `subscription-userinfo` 字段，而是将流量信息编码在节点名称中，例如：
-
-- `剩余流量：9976.5 GB`
-- `距离下次重置剩余：27 天`
-- `套餐到期：2099-12-31`
-
-本脚本通过 GET 请求获取订阅内容，base64 解码后逐行解析节点名称，提取上述信息并显示在 Surge 面板中。
-
-## 自定义
-
-在 `sub-info.sgmodule` 的 `argument` 中支持以下参数，用 `&` 连接：
+**参数说明**
 
 | 参数 | 说明 | 默认值 |
 |------|------|--------|
-| `url` | 订阅链接 | 必填 |
-| `title` | 面板标题 | `订阅信息` |
-| `icon` | SF Symbols 图标名称 | `airplane.circle` |
-| `color` | 图标颜色（十六进制） | `#007aff` |
+| url | 订阅链接（必填） | — |
+| title | 面板标题 | 订阅信息 |
+| icon | SF Symbol 图标名 | airplane.circle |
+| color | 图标颜色（十六进制） | #007aff |
 
-示例：
+**面板示例**
 
-```ini
-argument=url=https://你的订阅链接&title=我的机场&icon=wifi&color=#ff6600
 ```
+剩余流量：9976.12 GB
+距重置：26 天
+到期：2099-12-31
+```
+
+**说明**
+
+该模块通过解析订阅链接返回的 Base64 内容提取流量信息，适用于在节点名称中包含流量信息的机场订阅格式。面板每小时自动刷新一次。
+
+---
+
+## 目录结构
+
+```
+surge-scripts/
+├── sub-info.sgmodule          # 订阅流量信息模块
+├── Scripts/
+│   └── sub-info.js            # 订阅流量信息脚本
+└── README.md
+```
+
+---
+
+## License
+
+MIT

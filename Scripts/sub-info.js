@@ -1,7 +1,6 @@
 
 const raw = $argument || "";
 $done({ title: "调试", content: raw });
-return;
 
 const args = Object.fromEntries(
     ($argument || "").split("&").filter(Boolean).map(i => {

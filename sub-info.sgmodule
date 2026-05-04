@@ -1,7 +1,7 @@
 #!name = 订阅流量信息
 #!desc = 在面板中显示订阅剩余流量、距重置天数和到期时间
 #!category = Surge 插件
-#!arguments = url:订阅链接, title:面板标题=订阅信息, icon:图标=airplane.circle, color:颜色=%23007aff
+#!arguments = url:订阅链接, title:订阅信息, icon:airplane.circle, color:%23007aff
 
 [Panel]
 sub-info = script-name=sub-info,update-interval=3600,title=订阅信息,content=正在更新...

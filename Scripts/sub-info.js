@@ -3,10 +3,6 @@ const args = Object.fromEntries(
 );
 const url = args.url;
 
-if (!url) {
-    $done({ title: "订阅信息", content: "请配置订阅链接" });
-}
-
 $httpClient.get({ url }, (error, resp, body) => {
     if (error) {
         $done({ title: "订阅信息", content: `请求失败：${error}` });

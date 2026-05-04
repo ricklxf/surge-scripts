@@ -1,13 +1,7 @@
 const args = Object.fromEntries(
- ($argument || "")
-    .replace(/^#!arguments\s*=\s*/, "")
-    .split(",")                 // 按逗号分割
-    .map(s => s.trim())         // 去掉空格
-    .map(pair => {
-        const [k, v] = pair.includes("=") 
-            ? pair.split("=") 
-            : pair.split(":");  // 先按 = 分，再按 : 分
-        return [k.trim(), v.trim()];
+    ($argument || "").split("&").filter(Boolean).map(i => {
+        const eq = i.indexOf("=");
+        return [i.slice(0, eq), decodeURIComponent(i.slice(eq + 1))];
     })
 );
 

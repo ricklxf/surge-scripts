@@ -1,9 +1,11 @@
 #!name = 订阅流量信息
-#!desc = 显示订阅剩余流量和到期时间
-#!category = 流量看板
+#!desc = 在面板中显示订阅剩余流量、距重置天数和到期时间
+#!category = Surge 插件
+#!arguments = url:订阅链接, title:面板标题=订阅信息, icon:图标=airplane.circle, color:颜色=#007aff
 
 [Panel]
 sub-info = script-name=sub-info,update-interval=3600,title=订阅信息,content=Refreshing...
 
 [Script]
-sub-info = type=generic,timeout=10,script-path=Scripts/sub-info.js,script-update-interval=0
+sub-info = type=generic,timeout=10,script-path=https://raw.githubusercontent.com/ricklxf/surge-scripts
+/master/Scripts/sub-info.js,script-update-interval=0,argument=url={url}&title={title}&icon={icon}&color={color}

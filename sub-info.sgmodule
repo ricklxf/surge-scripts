@@ -7,4 +7,4 @@
 sub-info = script-name=sub-info,update-interval=3600,title=订阅信息,content=Refreshing...
 
 [Script]
-sub-info = type=generic,timeout=10,script-path=https://raw.githubusercontent.com/ricklxf/surge-scripts/refs/heads/master/Scripts/sub-info.js?v=2,script-update-interval=0,argument=url={url}&title={title}&icon={icon}&color={color}
+sub-info = type=generic,timeout=10,script-path=https://raw.githubusercontent.com/ricklxf/surge-scripts/refs/heads/master/Scripts/sub-info.js?v=3,script-update-interval=0,argument=url={url}&title={title}&icon={icon}&color={color}

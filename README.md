@@ -56,8 +56,3 @@ surge-scripts/
 └── README.md
 ```
 
----
-
-## License
-
-MIT
